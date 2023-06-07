@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MenuLibrary
 {
-    internal class Menu
+    public class Menu
     {
+
     }
 }
