@@ -25,8 +25,7 @@ namespace ConsoleUI
 
         public void WaitForKey()
         {
-            Console.ResetColor();
-            Console.WriteLine("\npress any key...");
+            Console.WriteLine("\nPress any key...");
             Console.ReadKey(true);
         }
 
