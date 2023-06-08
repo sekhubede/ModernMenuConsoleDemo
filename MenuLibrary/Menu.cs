@@ -44,14 +44,45 @@ namespace MenuLibrary
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
 
-
                 Console.WriteLine($"{prefix} << {currentOption} >>");
             }
+
+            Console.ResetColor();
         }
 
         public int Run()
         {
+            ConsoleKey keyPressed;
 
+            do
+            {
+                Console.Clear();
+                DisplayOptions();
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                keyPressed = keyInfo.Key;
+                
+                // Update SelectedIndex based on arroe keys.
+                if (ConsoleKey.UpArrow == keyPressed)
+                {
+                    SelectetIndex--;
+                    if (-1 == SelectetIndex)
+                    {
+                        SelectetIndex = Options.Length - 1;
+                    }
+                }
+                else if (ConsoleKey.DownArrow == keyPressed)
+                {
+                    SelectetIndex++;
+                    if (Options.Length == SelectetIndex)
+                    {
+                        SelectetIndex = 0;
+                    }
+                }
+
+            } while (ConsoleKey.Enter != keyPressed);
+
+            return SelectetIndex;
         }
     }
 }
