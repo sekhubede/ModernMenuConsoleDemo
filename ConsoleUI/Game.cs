@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MenuLibrary;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,18 +12,11 @@ namespace ConsoleUI
     {
         public void Start()
         {
-            Console.WriteLine("The game is starting!");
+            string prompt = "Welcome to the Paint Drying Simulator. What would you like to do?";
+            string[] options = { "Play", "About", "Exit" };
 
-            ConsoleKeyInfo keyPressed = Console.ReadKey();
-            if (ConsoleKey.Enter == keyPressed.Key)
-            {
-                Console.WriteLine("You pressed ENTER");
-            }
-
-            if (ConsoleKey.UpArrow == keyPressed.Key)
-            {
-                Console.WriteLine("You pressed the UP ARROW");
-            }
+            Menu mainMenu = new Menu(prompt, options);
+            int selectedIndex = mainMenu.Run();
 
             WaitForKey();
         }
@@ -30,6 +25,7 @@ namespace ConsoleUI
 
         public void WaitForKey()
         {
+            Console.ResetColor();
             Console.WriteLine("\npress any key...");
             Console.ReadKey(true);
         }
